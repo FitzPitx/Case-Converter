@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <title>Case Converter</title>
+</head>
+<body>
+    <div class="title">Case Converter</div>
+    <textarea name="case-converter"rows="10" cols="70">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Lettres sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </textarea>
+    <br>
+    <button id="upper-case" onclick="uppercase()">Upper Case</button>
+    <button id="lower-case" onclick="lowercase()">Lower Case</button>
+    <button id="proper-case" onclick="propercase()">Proper Case</button>
+    <button id="sentence-case" onclick="sentenceCase()" >Sentence Case</button>
+    <script>
+        function uppercase(){
+            document.getElementById('upper-case').addEventListener('click',function(){
+                document.querySelector('textarea').textContent =  document.querySelector('textarea').textContent.toUpperCase();
+            });
+        }
+        function lowercase(){
+            document.getElementById('lower-case').addEventListener('click',function(){
+                document.querySelector('textarea').textContent =  document.querySelector('textarea').textContent.toLowerCase();
+            });
+        }
+        function propercase(){
+        document.getElementById("proper-case").addEventListener("click", function (){
+        //get the value(which is a string) from textarea(text box)
+        let str = document.querySelector("textarea").value; //get the
+        // split this string into an words array by ' '(space)
+        let arr = str.split(' ');
+        //loop through the array items and uppercase the first letters
+        for (let i = 0; i < arr.length; i++){
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+        }
+        //use join() function to convert the array arr back to a string and add " "(space) between items.
+        document.querySelector("textarea").value = arr.join(' ');
+        });
+        }
+        function sentenceCase(){
+            document.getElementById("sentence-case").addEventListener("click", function (){
+            let str = document.querySelector('textarea').value;
+            let arr = str.split('. ');
+            for (let i = 0; i < arr.length; i++){
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase()
+            }
+            document.querySelector("textarea").value = arr.join(". ");
+});
+        }
+        
+    </script>
+</body>
+</html>
